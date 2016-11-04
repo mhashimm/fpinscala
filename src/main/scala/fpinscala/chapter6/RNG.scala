@@ -44,6 +44,10 @@ object RNG {
     ((d1,d2,d3), r3)
   }
 
+  def boolean(rng: RNG): (Boolean, RNG) =
+    rng.nextInt match { case (i,rng2) => (i%2==0,rng2) }
+
+
   def ints(count: Int)(rng: RNG): (List[Int], RNG) = {
     def loop(count: Int)(rng: RNG)(list: List[Int]): (List[Int], RNG) = {
       if(count == 0) (list, rng)
